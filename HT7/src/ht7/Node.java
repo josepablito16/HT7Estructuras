@@ -12,7 +12,7 @@ import static javafx.scene.input.KeyCode.T;
  *
  * @author jose
  */
-public class Node<E> 
+public class Node<E>
 {
     private Association<String, String> value;
     protected  Node<E> left;
@@ -36,18 +36,10 @@ public class Node<E>
     public String getKey()
     {
         return value.key;
+    } 
+    
+    public String getValue()
+    {
+        return value.value;
     }
-
-    
-
-   
-     
-    
-    
-    
-
-    
-    
-    
-    
 }

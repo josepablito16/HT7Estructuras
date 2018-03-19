@@ -13,10 +13,13 @@ import java.io.IOException;
 import static javafx.scene.input.KeyCode.K;
 import java.util.Map;
 import static javafx.scene.input.KeyCode.K;
+import java.util.Scanner;
+
 
 /**
  *
- * @author jose
+ * @author Jose 
+ * @author Luis Delgado
  */
 public class HT7 {
 
@@ -28,24 +31,38 @@ public class HT7 {
         String linea, ingles,espanol;
         
         //File archivo = new File ("./cards_desc.txt");
-        File archivo = new File ("C:\\Users\\jose\\Desktop\\DISEÑO\\TRABAJOS\\UVG\\3er Semestre\\Estructura de Datos\\HT7\\HT7Estructuras\\diccionario.txt");
+        //File archivo = new File ("C:\\Users\\jose\\Desktop\\DISEÑO\\TRABAJOS\\UVG\\3er Semestre\\Estructura de Datos\\HT7\\HT7Estructuras\\diccionario.txt");
+        File archivo = new File ("C:\\Users\\ledod\\Desktop\\Estructuras\\HojaTrabajo7\\diccionario.txt");
         FileReader fr = new FileReader (archivo);
         BufferedReader br = new BufferedReader(fr);
         
+        Scanner input=new Scanner(System.in);
+        
+        BinaryTree bt = new BinaryTree();
         
         while( (linea=br.readLine())!=null)
         {
             ingles=linea.substring(0,linea.indexOf(","));
             espanol=linea.substring(linea.indexOf(",")+1,linea.length());
+            bt.add(new Node(new Association(ingles,espanol)));
                     
-            System.out.println(ingles+espanol);
+            //System.out.println(ingles+espanol);
                     
         }
+        System.out.println("Por favor ingrese lo que desea traducir");
+        String ingreso=input.nextLine();
         
-        BinaryTree bt = new BinaryTree();
- 
+        String[] separado=ingreso.split(" ");
+        for (int i=0; i<separado.length;i++){
+            if (bt.containsKey(separado[i])){
+                separado[i]=bt.translate(separado[i]);
+            }
+        }
+        for (int i=0; i<separado.length;i++){
+            System.out.print(separado[i]+" ");
+        }
         
-        Association j=new Association("Hola","Hello");
+        /*Association j=new Association("Hola","Hello");
         Node n=new Node (j);
         
         Association k=new Association("Ala","Ala");
@@ -59,7 +76,7 @@ public class HT7 {
         
         
         bt.traverseInOrder(bt.root);
-         
+         */
     
         
         
