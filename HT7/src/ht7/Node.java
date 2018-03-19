@@ -5,22 +5,48 @@
  */
 package ht7;
 
+import java.util.Comparator;
+import static javafx.scene.input.KeyCode.T;
+
 /**
  *
  * @author jose
  */
-public class Node
+public class Node<E> 
 {
-    int value;
-    Node left;
-    Node right;
+    private Association<String, String> value;
+    protected  Node<E> left;
+    protected  Node<E> right;        
     
     public Node()
-    {}
-
-    public Node(int value) {
-        this.value = value;
+    {
+        value=null;
+        left=null;
+        right=null;
+        
+                
     }
+
+    public Node (Association<String, String> value) {
+        this.value = value;
+        left = null;
+        right = null;
+    }
+    
+    public String getKey()
+    {
+        return value.key;
+    }
+
+    
+
+   
+     
+    
+    
+    
+
+    
     
     
     

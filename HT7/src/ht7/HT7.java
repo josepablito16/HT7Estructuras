@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import static javafx.scene.input.KeyCode.K;
+import java.util.Map;
+import static javafx.scene.input.KeyCode.K;
 
 /**
  *
@@ -29,6 +32,7 @@ public class HT7 {
         FileReader fr = new FileReader (archivo);
         BufferedReader br = new BufferedReader(fr);
         
+        
         while( (linea=br.readLine())!=null)
         {
             ingles=linea.substring(0,linea.indexOf(","));
@@ -40,15 +44,18 @@ public class HT7 {
         
         BinaryTree bt = new BinaryTree();
  
-    bt.add(6);
-    bt.add(4);
-    bt.add(8);
-    bt.add(3);
-    bt.add(5);
-    bt.add(7);
-    bt.add(9);
- 
-        System.out.println(bt.containsNode(6));
+        
+        Association j=new Association("Hola","Hello");
+        Node n=new Node (j);
+        
+        Association k=new Association("Ala","Ala");
+        Node p=new Node (k);
+        
+    bt.add(n);
+    bt.add(p);
+    bt.add(n);
+    
+        System.out.println(bt.containsNode(n));
         
         
         bt.traverseInOrder(bt.root);

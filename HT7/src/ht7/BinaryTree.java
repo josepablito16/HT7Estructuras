@@ -6,19 +6,23 @@ package ht7;
  * @author jose
  */
 
-public class BinaryTree
+public class BinaryTree<E>
 {
     Node root;
     
-   private Node addRecursive(Node current, int value) 
+   private Node addRecursive(Node current, Node value) 
    {
-        if (current == null) {
-            return new Node(value);
+        if (current == null) 
+        {
+            Node<E> j=new Node<E>();
+            j=value;
+            return j;
         }
 
-        if (value < current.value) {
+      
+        if ((value.getKey()).compareTo(current.getKey())>0) {
             current.left = addRecursive(current.left, value);
-        } else if (value > current.value) {
+        } else if ((value.getKey()).compareTo(current.getKey())<0) {
             current.right = addRecursive(current.right, value);
         } else {
             // value already exists
@@ -28,25 +32,25 @@ public class BinaryTree
         return current;
     }
    
-   public void add(int value) 
+   public void add(Node value) 
    {
         root = addRecursive(root, value);
    }
    
-   private boolean containsNodeRecursive(Node current, int value) 
+   private boolean containsNodeRecursive(Node current, Node value) 
    {
         if (current == null) {
             return false;
         } 
-        if (value == current.value) {
+        if (value.getKey() == current.getKey()) {
             return true;
         } 
-        return value < current.value
+        return (value.getKey()).compareTo(current.getKey())<0
           ? containsNodeRecursive(current.left, value)
           : containsNodeRecursive(current.right, value);
     }
    
-   public boolean containsNode(int value) 
+   public boolean containsNode(Node value) 
    {
         return containsNodeRecursive(root, value);
    }
@@ -58,7 +62,7 @@ public class BinaryTree
         if (node != null) 
         {
             traverseInOrder(node.left);
-            System.out.print(" " + node.value);
+            System.out.print(" " + node.getKey());
             traverseInOrder(node.right);
         }
     }

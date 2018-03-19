@@ -5,44 +5,41 @@
  */
 package ht7;
 
+import java.util.Map;
+
 /**
  *
  * @author jose
  */
-public class Association<K, V> 
+public class Association<K, V> implements Map.Entry<K,V> 
 {
-	private K key;
-	private V value;
+	protected K key;
+	protected V value;
 
 	public Association(K key, V value) 
         {
-		this.key = key;
-		this.value = value;
+            this.key = key;
+            this.value = value;
 	}
 
-	public K getKey() 
-        {
-		return key;
-	}
+    @Override
+    public K getKey() 
+    {
+        return key;
+        
+    }
 
-	public void setKey(K key) 
-        {
-		this.key = key;
-	}
+    @Override
+    public V getValue() 
+    {
+        return value;
+    }
 
-	public V getValue() 
-        {
-		return value;
-	}
+    @Override
+    public V setValue(V v) 
+    {
+        return value=v;
+    }
 
-	public void setValue(V value) 
-        {
-		this.value = value;
-	}
-
-	@Override
-	public String toString() 
-        {
-		return "(" + key.toString() + ", " + value.toString() + ")";
-	}
+	
 }
