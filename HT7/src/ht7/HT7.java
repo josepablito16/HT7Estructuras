@@ -54,8 +54,8 @@ public class HT7 {
         
         String[] separado=ingreso.split(" ");
         for (int i=0; i<separado.length;i++){
-            if (bt.containsKey(separado[i])){
-                separado[i]=bt.translate(separado[i]);
+            if (bt.containsKey(separado[i].toLowerCase())){
+                separado[i]=bt.translate(separado[i].toLowerCase());
             }
         }
         for (int i=0; i<separado.length;i++){
